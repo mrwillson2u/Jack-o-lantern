@@ -1,8 +1,7 @@
 #include <FastLED.h>
 
-#define LED_PIN     5
-#define COLOR_ORDER GRB
-#define CHIPSET     WS2811
+#define DATA_PIN     11
+#define CLOCK_PIN     13
 #define NUM_LEDS    30
 
 #define BRIGHTNESS  200
@@ -16,7 +15,8 @@ void setup() {
 
   Serial.begin(9600);
   delay(3000); // sanity delay
-  FastLED.addLeds<CHIPSET, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
+  FastLED.addLeds<APA102, DATA_PIN, CLOCK_PIN, BGR>(leds, NUM_LEDS);
+//  FastLED.addLeds<CHIPSET, LED_PIN, COLOR_ORDER>(leds, NUM_LEDS).setCorrection( TypicalLEDStrip );
   FastLED.setBrightness( BRIGHTNESS );
 }
 
